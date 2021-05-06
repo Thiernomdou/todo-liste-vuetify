@@ -1,5 +1,18 @@
 <template>
   <div class="home">
+
+    <v-text-field
+      v-model="nouveauTitre"
+      @click:append="ajoutLangage"
+      @keyup.enter="ajoutLangage"
+      class="pa-3"
+      outlined
+      label="Ajouter un langage"
+      append-icon="mdi-plus"
+      hide-details
+      clearable
+    ></v-text-field>
+
     <v-list class="pt-0" flat>
       <div v-for="langage in langages" :key="langage.id">
       
@@ -43,6 +56,7 @@
     name: 'Todo',
     data() {
       return {
+        nouveauTitre: '',
         langages: [
           {id: 1, title: 'JavaScript', fini: false},
           {id: 2, title: 'C#.NET', fini: false},
@@ -52,6 +66,15 @@
       }
     },
     methods: {
+      ajoutLangage() {
+        let nouveauLangage = {
+          id: Date.now(),
+          title: this.nouveauTitre,
+          fini: false
+        }
+        this.langages.push(nouveauLangage);
+        this.nouveauTitre = '';
+      },
       finiLangage(id) {
         let langage = this.langages.filter(langage => langage.id === id)[0];
         langage.fini =!langage.fini;
