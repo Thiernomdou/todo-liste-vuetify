@@ -35,7 +35,7 @@
 
           <v-list-item-action>
             <v-btn @click.stop="deleteLangage(langage.id)" icon>
-              <v-icon color="primary lighten-1">mdi-delete</v-icon>
+              <v-icon color="error lighten-1">mdi-delete</v-icon>
             </v-btn>
           </v-list-item-action>
 
